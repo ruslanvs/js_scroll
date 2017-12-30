@@ -21,20 +21,27 @@
 </head>
 <body>
 
-	Coding is <div id="magic"></div>
+	Coding is&nbsp;<div id="magic"></div>
 
 	<script>
 
 		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
-			el = document.getElementById('magic'),
+			el = document.getElementById('magic'), 
 			word_counter = 0,
+			character = "";
 			character_counter = 0;
 
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			character =	words[word_counter][character_counter];
+			if ( character == ' ' )
+				character = "&nbsp;";
 
-			if(character_counter == words[word_counter].length)
+			// el.innerHTML = el.innerHTML+words[word_counter][character_counter]; //replacement of the space with Entity name did not work on this one
+			el.innerHTML = el.innerHTML+character;
+			character_counter++;
+
+			if(character_counter == words[word_counter].length + 1)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
